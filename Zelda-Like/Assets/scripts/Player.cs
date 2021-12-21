@@ -257,7 +257,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetAxisRaw("Horizontal") == -1)
         {
-            weapon.transform.localPosition = new Vector3(.5f, 1.2f, 0.0f);
+            weapon.transform.localPosition = new Vector3(0.0f, 1.2f, 0.0f);
         }
 
         if (Input.GetAxisRaw("Horizontal") == 1)
