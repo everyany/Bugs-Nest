@@ -92,6 +92,7 @@ public class Player : MonoBehaviour
         Physics2D.IgnoreLayerCollision(3, 6, true);
         Physics2D.IgnoreLayerCollision(3, 11, true);
         Physics2D.IgnoreLayerCollision(6, 9, true);
+        stats.noGrab = true;
     }
 
     void Update()
@@ -177,6 +178,7 @@ public class Player : MonoBehaviour
                     Physics2D.IgnoreLayerCollision(3, 10, false);
                     Physics2D.IgnoreLayerCollision(3, 10, false);
                     Physics2D.IgnoreLayerCollision(3, 13, false);
+                    Physics2D.IgnoreLayerCollision(3, 14, false);
             }
             }
             else
@@ -192,6 +194,7 @@ public class Player : MonoBehaviour
                     Physics2D.IgnoreLayerCollision(3, 10, false);
                     Physics2D.IgnoreLayerCollision(3, 10, false);
                     Physics2D.IgnoreLayerCollision(3, 13, false);
+                    Physics2D.IgnoreLayerCollision(3, 14, false);
             }
             inUse = false;
             }

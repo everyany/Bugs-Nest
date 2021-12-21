@@ -11,6 +11,9 @@ public class Hungry : MonoBehaviour
 
     private bool done = false;
 
+    public SpriteRenderer spriteRenderer;
+    public Sprite newSprite;
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "fly")
@@ -19,8 +22,7 @@ public class Hungry : MonoBehaviour
             {
                 puzz.rooms[roomNum]++;
             }
-            Destroy(this.gameObject);
-            Destroy(collider.gameObject);
+            spriteRenderer.sprite = newSprite;
         }
     }
 }

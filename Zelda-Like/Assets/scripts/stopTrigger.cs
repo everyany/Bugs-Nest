@@ -17,6 +17,8 @@ public class stopTrigger : MonoBehaviour
             player.transform.parent = null;
             player.transform.rotation = Quaternion.identity;
             stats.grabbedStatusEffect = false;
+            stats.noGrab = true;
+            Physics2D.IgnoreLayerCollision(3,12, true);
         }
     }
 }
