@@ -15,6 +15,11 @@ public class miniBoss : MonoBehaviour
     private int roomNum;
 
     bool done = false;
+    bool coolDown = false;
+
+    public SpriteRenderer m_SpriteRenderer;
+    Color32 hit = new Color32(255, 0, 255, 255);
+    Color32 normal = new Color32(255, 255, 255, 255);
 
     void OnTriggerEnter2D(Collider2D coll)
     {
@@ -37,6 +42,19 @@ public class miniBoss : MonoBehaviour
                     done = true;
                 }
             }
+            if (coolDown == false)
+            {
+                StartCoroutine(colorChange());
+            }
         }
+    }
+
+    IEnumerator colorChange()
+    {
+        coolDown = true;
+        m_SpriteRenderer.color = hit;
+        yield return new WaitForSeconds(.25f);
+        m_SpriteRenderer.color = normal;
+        coolDown = false;
     }
 }
