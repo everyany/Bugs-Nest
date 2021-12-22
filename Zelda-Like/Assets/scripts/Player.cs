@@ -76,6 +76,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private ForestPuzzleCheck puzz;
 
+    [SerializeField]
+    private GameObject circle;
+
     //public bool speedStatusEffect = false;
 
     void Start()
@@ -92,6 +95,8 @@ public class Player : MonoBehaviour
         Physics2D.IgnoreLayerCollision(3, 6, true);
         Physics2D.IgnoreLayerCollision(3, 11, true);
         Physics2D.IgnoreLayerCollision(6, 9, true);
+        Physics2D.IgnoreLayerCollision(10, 15, true);
+        Physics2D.IgnoreLayerCollision(13, 15, true);
         stats.noGrab = true;
     }
 
@@ -118,6 +123,7 @@ public class Player : MonoBehaviour
             transform.localPosition = new Vector3(0, 0, 0);
             frontOfPlayer.transform.localPosition = new Vector3(0.1999898f, -16f, 0.0f);
         }
+        circle.transform.localPosition = new Vector3(0f, 0f, 0f);
     }
 
     void FixedUpdate()
