@@ -15,7 +15,7 @@ public class miniBoss : MonoBehaviour
     private int roomNum;
 
     bool done = false;
-    bool coolDown = false;
+    public bool coolDown = false;
 
     public SpriteRenderer m_SpriteRenderer;
     Color32 hit = new Color32(255, 0, 255, 255);
@@ -23,8 +23,9 @@ public class miniBoss : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.gameObject.tag == "attack")
+        if(coll.gameObject.tag == "attack" || coll.gameObject.tag == "wall")
         {
+            coolDown = false;
             if(health > 0)
             {
                 health--;
@@ -53,7 +54,7 @@ public class miniBoss : MonoBehaviour
     {
         coolDown = true;
         m_SpriteRenderer.color = hit;
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(.2f);
         m_SpriteRenderer.color = normal;
         coolDown = false;
     }

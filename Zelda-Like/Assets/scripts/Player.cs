@@ -97,6 +97,9 @@ public class Player : MonoBehaviour
         Physics2D.IgnoreLayerCollision(6, 9, true);
         Physics2D.IgnoreLayerCollision(10, 15, true);
         Physics2D.IgnoreLayerCollision(13, 15, true);
+        Physics2D.IgnoreLayerCollision(9, 13, true);
+        Physics2D.IgnoreLayerCollision(9, 10, true);
+        Physics2D.IgnoreLayerCollision(10, 15, true);
         stats.noGrab = true;
     }
 
