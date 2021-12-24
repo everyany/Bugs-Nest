@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
 
     bool coolDown = false;
     bool coolDown2 = false;
+    bool coolDown3 = false;
 
     [SerializeField]
     private GameObject weapon;
@@ -78,6 +79,12 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private GameObject circle;
+
+    public SpriteRenderer m_SpriteRenderer;
+    Color32 hit = new Color32(255, 255, 255, 0);
+    Color32 normal = new Color32(255, 255, 255, 255);
+
+    bool invincible = false;
 
     //public bool speedStatusEffect = false;
 
@@ -238,8 +245,9 @@ public class Player : MonoBehaviour
 
         if(stats.health == 0)
         {
-            transform.position = teleportTarget.transform.position;
+            player.transform.position = teleportTarget.transform.position;
             stats.health += 10;
+            healthScore.text = "Health: " + stats.health;
         }
 
         /*if(skullCount.skulls == 2)
@@ -299,8 +307,15 @@ public class Player : MonoBehaviour
         }
         if(collision.gameObject.tag == "lava" || collision.gameObject.tag == "pitfall" || collision.gameObject.tag == "enemy" || collision.gameObject.tag == "fire" && stats.health > 0)
         {
-            stats.health--;
+            if (invincible == false)
+            {
+                stats.health--;
+            }
             healthScore.text = "Health: " + stats.health;
+            if (coolDown3 == false && collision.gameObject.tag != "pitfall")
+            {
+                StartCoroutine(invincibilityFrames());
+            }
         }
 
         Debug.Log(collision.gameObject);
@@ -324,5 +339,32 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         stamina += 1f;
         coolDown2 = false;
+    }
+
+    IEnumerator invincibilityFrames()
+    {
+        coolDown3 = true;
+        invincible = true;
+        m_SpriteRenderer.color = hit;
+        yield return new WaitForSeconds(.2f);
+        m_SpriteRenderer.color = normal;
+        yield return new WaitForSeconds(.2f);
+        m_SpriteRenderer.color = hit;
+        yield return new WaitForSeconds(.2f);
+        m_SpriteRenderer.color = normal;
+        yield return new WaitForSeconds(.2f);
+        m_SpriteRenderer.color = hit;
+        yield return new WaitForSeconds(.2f);
+        m_SpriteRenderer.color = normal;
+        yield return new WaitForSeconds(.2f);
+        m_SpriteRenderer.color = hit;
+        yield return new WaitForSeconds(.2f);
+        m_SpriteRenderer.color = normal;
+        yield return new WaitForSeconds(.2f);
+        m_SpriteRenderer.color = hit;
+        yield return new WaitForSeconds(.2f);
+        m_SpriteRenderer.color = normal;
+        invincible = false;
+        coolDown3 = false;
     }
 }

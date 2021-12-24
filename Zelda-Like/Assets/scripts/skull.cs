@@ -18,9 +18,17 @@ public class skull : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rb;
 
+    public bool coolDown = false;
+
+    public SpriteRenderer m_SpriteRenderer;
+    Color32 hit = new Color32(255, 0, 255, 255);
+    Color32 normal = new Color32(255, 255, 255, 255);
+
     void Start()
     {
         Array.Clear(enemies.enemies, 0, enemies.enemies.Length);
+        Physics2D.IgnoreLayerCollision(10, 16, true);
+        Physics2D.IgnoreLayerCollision(10, 17, true);
     }
 
     void Update()
@@ -41,7 +49,20 @@ public class skull : MonoBehaviour
         if (collision.gameObject.tag == "attack" && health > -1)
         {
             health--;
-            rb.velocity = Vector3.zero;
+            //rb.velocity = Vector3.zero;
+            if (coolDown == false)
+            {
+                StartCoroutine(colorChange());
+            }
         }
+    }
+
+    IEnumerator colorChange()
+    {
+        coolDown = true;
+        m_SpriteRenderer.color = hit;
+        yield return new WaitForSeconds(.2f);
+        m_SpriteRenderer.color = normal;
+        coolDown = false;
     }
 }
