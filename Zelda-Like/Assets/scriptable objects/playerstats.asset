@@ -18,3 +18,5 @@ MonoBehaviour:
   speedStatusEffect: 0
   grabbedStatusEffect: 0
   keys: 0
+  noGrab: 1
+  skills: 0000

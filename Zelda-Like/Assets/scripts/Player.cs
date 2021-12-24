@@ -91,6 +91,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         Array.Clear(puzz.rooms, 0, puzz.rooms.Length);
+        Array.Clear(stats.skills, 0, stats.skills.Length);
         stats.speedStatusEffect = false;
         stats.grabbedStatusEffect = false;
         stats.health = 10;
@@ -156,7 +157,9 @@ public class Player : MonoBehaviour
             Vector2 movementDirection = new Vector2(horizontalInput, verticalInput);
             float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
             movementDirection.Normalize();
-
+        //
+        if (stats.skills[1] == true)
+        {
             if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0 && Input.GetKey(KeyCode.X) && stamina > 0)
             {
                 fireAbility.SetActive(true);
@@ -195,7 +198,7 @@ public class Player : MonoBehaviour
                     Physics2D.IgnoreLayerCollision(3, 10, false);
                     Physics2D.IgnoreLayerCollision(3, 13, false);
                     Physics2D.IgnoreLayerCollision(3, 14, false);
-            }
+                }
             }
             else
             {
@@ -211,9 +214,12 @@ public class Player : MonoBehaviour
                     Physics2D.IgnoreLayerCollision(3, 10, false);
                     Physics2D.IgnoreLayerCollision(3, 13, false);
                     Physics2D.IgnoreLayerCollision(3, 14, false);
+                }
+
+                //
+                inUse = false;
             }
-            inUse = false;
-            }
+        }
 
             if (animator.GetBool("isAttacking") == false)
             {

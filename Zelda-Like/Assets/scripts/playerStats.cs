@@ -12,4 +12,5 @@ public class playerStats : ScriptableObject
     public bool grabbedStatusEffect;
     public float keys;
     public bool noGrab;
+    public bool[] skills;
 }

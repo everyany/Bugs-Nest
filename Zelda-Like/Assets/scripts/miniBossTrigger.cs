@@ -13,6 +13,7 @@ public class miniBossTrigger : MonoBehaviour
         {
             animator.SetBool("close", true);
             bossAnimator.SetBool("start", true);
+            Destroy(this.gameObject);
         }
     }
 }
