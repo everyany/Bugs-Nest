@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa448e61e184f3a4fb41e6db519411d6, type: 3}
   m_Name: playerstats
   m_EditorClassIdentifier: 
-  health: 10
+  health: 9
   speed: 5
   speedHolder: 5
   speedStatusEffect: 0
@@ -20,3 +20,4 @@ MonoBehaviour:
   keys: 0
   noGrab: 1
   skills: 0000
+  skillUse: 000000

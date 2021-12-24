@@ -21,7 +21,7 @@ public class deathInTheTrees : MonoBehaviour
 
     IEnumerator dramaticEffect()
     {
-        yield return new WaitForSeconds(.19f);
+        yield return new WaitForSeconds(.01f);
         player.transform.parent = null;
         player.transform.position = teleportTarget.transform.position;
     }

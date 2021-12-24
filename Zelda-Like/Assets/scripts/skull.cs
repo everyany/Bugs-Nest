@@ -46,10 +46,19 @@ public class skull : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "attack" && health > -1)
+        if (collision.gameObject.tag == "sword" && health > -1)
+        {
+            health -= 2;
+            rb.velocity = Vector3.zero;
+            if (coolDown == false)
+            {
+                StartCoroutine(colorChange());
+            }
+        }
+        else if (collision.gameObject.tag == "bullet" && health > -1)
         {
             health--;
-            //rb.velocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
             if (coolDown == false)
             {
                 StartCoroutine(colorChange());

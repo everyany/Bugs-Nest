@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5109277640602391821}
   m_Layer: 6
   m_Name: bullet
-  m_TagString: attack
+  m_TagString: bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a0686f94b5f8c4dab2e0d9437c3003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 10
   rb: {fileID: 6556243844933114279}
 --- !u!58 &5458791924142124092
 CircleCollider2D:

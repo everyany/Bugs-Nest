@@ -21,6 +21,8 @@ public class specificTorch : MonoBehaviour
     private GameObject player;
     [SerializeField]
     private GameObject web;
+    [SerializeField]
+    private playerStats stats;
 
     void Start()
     {
@@ -32,7 +34,7 @@ public class specificTorch : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.X))
+        if (Input.GetKey(KeyCode.X) && stats.skills[1] == true)
         {
             player.transform.parent = null;
         }

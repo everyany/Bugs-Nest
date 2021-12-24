@@ -85,6 +85,7 @@ public class Player : MonoBehaviour
     Color32 normal = new Color32(255, 255, 255, 255);
 
     bool invincible = false;
+    bool usable;
 
     //public bool speedStatusEffect = false;
 
@@ -108,6 +109,7 @@ public class Player : MonoBehaviour
         Physics2D.IgnoreLayerCollision(9, 13, true);
         Physics2D.IgnoreLayerCollision(9, 10, true);
         Physics2D.IgnoreLayerCollision(10, 15, true);
+        Physics2D.IgnoreLayerCollision(6, 14, true);
         stats.noGrab = true;
     }
 
@@ -135,6 +137,20 @@ public class Player : MonoBehaviour
             frontOfPlayer.transform.localPosition = new Vector3(0.1999898f, -16f, 0.0f);
         }
         circle.transform.localPosition = new Vector3(0f, 0f, 0f);
+
+        rb.WakeUp();
+
+        for (int i = 0; i < stats.skillUse.Length; i++)
+        {
+            if (stats.skillUse[i])
+            {
+                usable = false;
+            }
+            else
+            {
+                usable = true;
+            }
+        }
     }
 
     void FixedUpdate()
@@ -158,9 +174,7 @@ public class Player : MonoBehaviour
             float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
             movementDirection.Normalize();
         //
-        if (stats.skills[1] == true)
-        {
-            if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0 && Input.GetKey(KeyCode.X) && stamina > 0)
+            if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0 && Input.GetKey(KeyCode.X) && stamina > 0 && stats.skills[1] == true)
             {
                 fireAbility.SetActive(true);
                 fireRB.position = fireRB.position + movementDirection * Time.deltaTime * stats.speed;
@@ -173,7 +187,7 @@ public class Player : MonoBehaviour
                 stamina -= .1f;
                 inUse = true;
             }
-            else if (Input.GetAxisRaw("Horizontal") > 0 && Input.GetKey(KeyCode.X) && stamina > 0 || Input.GetAxisRaw("Vertical") > 0 && Input.GetKey(KeyCode.X) && stamina > 0 || Input.GetAxisRaw("Horizontal") < 0 && Input.GetKey(KeyCode.X) && stamina > 0 || Input.GetAxisRaw("Vertical") < 0 && Input.GetKey(KeyCode.X) && stamina > 0)
+            else if (Input.GetAxisRaw("Horizontal") > 0 && Input.GetKey(KeyCode.X) && stamina > 0 || Input.GetAxisRaw("Vertical") > 0 && Input.GetKey(KeyCode.X) && stamina > 0 || Input.GetAxisRaw("Horizontal") < 0 && Input.GetKey(KeyCode.X) && stamina > 0 || Input.GetAxisRaw("Vertical") < 0 && Input.GetKey(KeyCode.X) && stamina > 0 && stats.skills[1] == true)
             {
                 fireAbility.SetActive(true);
                 fireRB.position = fireRB.position + movementDirection * Time.deltaTime * stats.speed;
@@ -183,7 +197,7 @@ public class Player : MonoBehaviour
                 stamina -= .3f;
                 inUse = true;
             }
-            else if (Input.GetKey(KeyCode.X) && stamina == 0)
+            else if (Input.GetKey(KeyCode.X) && stamina == 0 && stats.skills[1] == true)
             {
                 inUse = true;
                 fireAbility.SetActive(false);
@@ -219,7 +233,6 @@ public class Player : MonoBehaviour
                 //
                 inUse = false;
             }
-        }
 
             if (animator.GetBool("isAttacking") == false)
             {
@@ -275,7 +288,7 @@ public class Player : MonoBehaviour
 
         frontOfPlayer.transform.localPosition = new Vector3(0.1999898f, -16f, 0.0f);
 
-        if (Input.GetKey(KeyCode.Z) && coolDown == false)
+        if (Input.GetKey(KeyCode.Z) && coolDown == false && usable)
         {
             Debug.Log("pressed");
             StartCoroutine(attack());
@@ -330,12 +343,14 @@ public class Player : MonoBehaviour
     IEnumerator attack()
     {
         coolDown = true;
+        stats.skillUse[1] = true;
         Debug.Log("couroutine");
         weapon.SetActive(true);
         animator.SetBool("isAttacking", true);
         yield return new WaitForSeconds(.25f);
         weapon.SetActive(false);
         animator.SetBool("isAttacking", false);
+        stats.skillUse[1] = false;
         coolDown = false;
     }
 

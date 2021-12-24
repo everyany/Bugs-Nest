@@ -13,7 +13,7 @@ public class eyeballSmack : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "attack" || coll.gameObject.tag == "fire" && done == false)
+        if (coll.gameObject.tag == "attack" || coll.gameObject.tag == "fire" || coll.gameObject.tag == "sword" || coll.gameObject.tag == "bullet" && done == false)
         {
             done = true;
             if (roomNum != 0)

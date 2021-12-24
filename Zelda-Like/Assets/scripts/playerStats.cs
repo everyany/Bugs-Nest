@@ -13,4 +13,5 @@ public class playerStats : ScriptableObject
     public float keys;
     public bool noGrab;
     public bool[] skills;
+    public bool[] skillUse;
 }

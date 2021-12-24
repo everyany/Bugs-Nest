@@ -8,7 +8,7 @@ public class freeFirefly : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collider)
     {
-        if (collider.gameObject.tag == "attack")
+        if (collider.gameObject.tag == "bullet")
         {
             animator.SetBool("drop", true);
             Destroy(this.gameObject);
