@@ -5220,7 +5220,7 @@ GameObject:
   - component: {fileID: 139340195}
   - component: {fileID: 139340194}
   - component: {fileID: 139340193}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: lockedDoor
   m_TagString: barrier
   m_Icon: {fileID: 0}
@@ -5257,8 +5257,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.4912196, y: 0.46068692}
+    oldSize: {x: 4.9605317, y: 7.0160003}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5328,7 +5328,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e6bca2ef8ac4874aa23806deca40f08, type: 3}
   m_Color: {r: 0.98823535, g: 0.7411765, b: 0.043137256, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -22563,7 +22563,7 @@ GameObject:
   - component: {fileID: 629181890}
   - component: {fileID: 629181889}
   - component: {fileID: 629181888}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: spider statue (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32845,7 +32845,7 @@ GameObject:
   - component: {fileID: 959972029}
   - component: {fileID: 959972028}
   - component: {fileID: 959972027}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: lockedDoor (2)
   m_TagString: barrier
   m_Icon: {fileID: 0}
@@ -32882,8 +32882,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.4912196, y: 0.46068692}
+    oldSize: {x: 4.9605317, y: 7.0160003}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -32953,7 +32953,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e6bca2ef8ac4874aa23806deca40f08, type: 3}
   m_Color: {r: 0.98823535, g: 0.7411765, b: 0.043137256, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -44888,7 +44888,7 @@ GameObject:
   - component: {fileID: 1294234353}
   - component: {fileID: 1294234352}
   - component: {fileID: 1294234351}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: lockedDoor (1)
   m_TagString: barrier
   m_Icon: {fileID: 0}
@@ -44925,8 +44925,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.4912196, y: 0.46068692}
+    oldSize: {x: 4.9605317, y: 7.0160003}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -44996,7 +44996,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e6bca2ef8ac4874aa23806deca40f08, type: 3}
   m_Color: {r: 0.98823535, g: 0.7411765, b: 0.043137256, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -58786,7 +58786,7 @@ GameObject:
   - component: {fileID: 1667919342}
   - component: {fileID: 1667919346}
   - component: {fileID: 1667919347}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: spider statue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64022,7 +64022,7 @@ MonoBehaviour:
   roomNum: 0
   player: {fileID: 2932849227035703798}
   web: {fileID: 6506920620848740490}
-  stats: {fileID: 0}
+  stats: {fileID: 11400000, guid: 8c8a7e8835625934785e8618d2360605, type: 2}
 --- !u!50 &1821023351
 Rigidbody2D:
   serializedVersion: 4
@@ -77795,7 +77795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.05660379, g: 0.055268794, b: 0.055268794, a: 1}
+  m_Color: {r: 1, g: 0.7607843, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -78016,7 +78016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.047169805, g: 0.046502307, b: 0.046502307, a: 1}
+  m_Color: {r: 1, g: 0.76019466, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -78237,7 +78237,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2932849227035703798}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.89, y: 4.83, z: 0}
+  m_LocalPosition: {x: 1.62, y: 4.92, z: 0}
   m_LocalScale: {x: 0.022315415, y: 0.015899736, z: 0.022315416}
   m_Children:
   - {fileID: 2932849227558015747}

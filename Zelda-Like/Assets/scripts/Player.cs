@@ -187,7 +187,7 @@ public class Player : MonoBehaviour
                 stamina -= .1f;
                 inUse = true;
             }
-            else if (Input.GetAxisRaw("Horizontal") > 0 && Input.GetKey(KeyCode.X) && stamina > 0 || Input.GetAxisRaw("Vertical") > 0 && Input.GetKey(KeyCode.X) && stamina > 0 || Input.GetAxisRaw("Horizontal") < 0 && Input.GetKey(KeyCode.X) && stamina > 0 || Input.GetAxisRaw("Vertical") < 0 && Input.GetKey(KeyCode.X) && stamina > 0 && stats.skills[1] == true)
+            else if (stats.skills[1] == true && Input.GetAxisRaw("Horizontal") > 0 && Input.GetKey(KeyCode.X) && stamina > 0 || stats.skills[1] == true && Input.GetAxisRaw("Vertical") > 0 && Input.GetKey(KeyCode.X) && stamina > 0 || stats.skills[1] == true && Input.GetAxisRaw("Horizontal") < 0 && Input.GetKey(KeyCode.X) && stamina > 0 || stats.skills[1] == true && Input.GetAxisRaw("Vertical") < 0 && Input.GetKey(KeyCode.X) && stamina > 0)
             {
                 fireAbility.SetActive(true);
                 fireRB.position = fireRB.position + movementDirection * Time.deltaTime * stats.speed;
@@ -197,7 +197,7 @@ public class Player : MonoBehaviour
                 stamina -= .3f;
                 inUse = true;
             }
-            else if (Input.GetKey(KeyCode.X) && stamina == 0 && stats.skills[1] == true)
+            else if (Input.GetKey(KeyCode.X) && stamina == 0)
             {
                 inUse = true;
                 fireAbility.SetActive(false);

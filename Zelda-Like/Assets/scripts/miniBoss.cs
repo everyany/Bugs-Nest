@@ -23,7 +23,7 @@ public class miniBoss : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.gameObject.tag == "attack" || coll.gameObject.tag == "wall")
+        if(coll.gameObject.tag == "attack" || coll.gameObject.tag == "wall" || coll.gameObject.tag == "sword" || coll.gameObject.tag == "bullet")
         {
             coolDown = false;
             if(health > 0)
