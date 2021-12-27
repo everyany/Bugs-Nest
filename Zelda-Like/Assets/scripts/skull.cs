@@ -33,7 +33,7 @@ public class skull : MonoBehaviour
 
     void Update()
     {
-        if (health == 0 && dead == false)
+        if (health <= 0 && dead == false)
         {
             if(roomNum != 0)
             {

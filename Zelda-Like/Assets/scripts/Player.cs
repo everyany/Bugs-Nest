@@ -111,6 +111,7 @@ public class Player : MonoBehaviour
         Physics2D.IgnoreLayerCollision(10, 15, true);
         Physics2D.IgnoreLayerCollision(6, 14, true);
         stats.noGrab = true;
+        stats.hit = false;
     }
 
     void Update()
@@ -150,6 +151,12 @@ public class Player : MonoBehaviour
             {
                 usable = true;
             }
+        }
+
+        if (stats.hit == true && coolDown3 == false)
+        {
+            healthScore.text = "Health: " + stats.health;
+            StartCoroutine(invincibilityFrames());
         }
     }
 
@@ -387,5 +394,6 @@ public class Player : MonoBehaviour
         m_SpriteRenderer.color = normal;
         invincible = false;
         coolDown3 = false;
+        stats.hit = false;
     }
 }

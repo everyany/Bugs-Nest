@@ -14,4 +14,5 @@ public class playerStats : ScriptableObject
     public bool noGrab;
     public bool[] skills;
     public bool[] skillUse;
+    public bool hit;
 }

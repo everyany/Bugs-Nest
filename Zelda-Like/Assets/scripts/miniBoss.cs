@@ -23,12 +23,12 @@ public class miniBoss : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.gameObject.tag == "attack" || coll.gameObject.tag == "wall" || coll.gameObject.tag == "sword" || coll.gameObject.tag == "bullet")
+        if(coll.gameObject.tag == "attack" || coll.gameObject.tag == "sword")
         {
             coolDown = false;
             if(health > 0)
             {
-                health--;
+                health -= 2;
             }
             else if(health <= 0)
             {
@@ -38,6 +38,31 @@ public class miniBoss : MonoBehaviour
                 animator.SetBool("close", false);
                 animator.SetBool("open", true);
                 if(done == false)
+                {
+                    puzz.rooms[roomNum]++;
+                    done = true;
+                }
+            }
+            if (coolDown == false)
+            {
+                StartCoroutine(colorChange());
+            }
+        }
+        else if (coll.gameObject.tag == "bullet")
+        {
+            coolDown = false;
+            if (health > 0)
+            {
+                health--;
+            }
+            else if (health <= 0)
+            {
+                bossAnimator.SetBool("start", false);
+                bossAnimator.SetBool("dead", true);
+
+                animator.SetBool("close", false);
+                animator.SetBool("open", true);
+                if (done == false)
                 {
                     puzz.rooms[roomNum]++;
                     done = true;
