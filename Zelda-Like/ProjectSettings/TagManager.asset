@@ -17,6 +17,7 @@ TagManager:
   - flammable
   - sword
   - bullet
+  - block
   layers:
   - Default
   - TransparentFX

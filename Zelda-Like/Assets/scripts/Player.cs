@@ -346,6 +346,26 @@ public class Player : MonoBehaviour
 
         Debug.Log(collision.gameObject);
     }
+    
+    void OnCollisionStay2D(Collision2D coll)
+    {
+        if(coll.gameObject.tag == "block")
+        {
+            animator.SetBool("pushing", true);
+        }
+        if (coll.gameObject.tag == "block" && animator.GetFloat("horizontal") == 0 && animator.GetFloat("vertical") == 0)
+        {
+            animator.SetBool("pushing", false);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "block")
+        {
+            animator.SetBool("pushing", false);
+        }
+    }
 
     IEnumerator attack()
     {

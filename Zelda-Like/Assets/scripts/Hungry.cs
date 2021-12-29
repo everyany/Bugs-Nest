@@ -16,7 +16,7 @@ public class Hungry : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "fly")
+        if (collider.gameObject.tag == "block")
         {
             if (roomNum != 0)
             {
