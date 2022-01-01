@@ -16,4 +16,7 @@ public class playerStats : ScriptableObject
     public bool[] skillUse;
     public bool hit;
     public bool platformGrab;
+    public float stamina;
+    public float maxStamina;
+    public bool inUse = false;
 }

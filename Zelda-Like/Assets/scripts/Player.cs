@@ -65,12 +65,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject fireAbility;
 
-    [SerializeField]
+    /*[SerializeField]
     private float stamina;
     [SerializeField]
     private float maxStamina;
 
-    private bool inUse = false;
+    private bool inUse = false;*/
 
     public staminaBar stam;
 
@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
         stats.grabbedStatusEffect = false;
         stats.health = 10;
         stats.keys = 0;
-        stam.setMaxStamina(maxStamina);
+        stam.setMaxStamina(stats.maxStamina);
         //skullCount.done = false;
         escaped.enabled = false;
         weapon.SetActive(false);
@@ -112,25 +112,26 @@ public class Player : MonoBehaviour
         Physics2D.IgnoreLayerCollision(6, 14, true);
         stats.noGrab = true;
         stats.hit = false;
+        stats.inUse = false;
     }
 
     void Update()
     {
         textScore.text = "Keys: " + stats.keys;
-        if (stamina < 0)
+        if (stats.stamina < 0)
         {
-            stamina = 0;
+            stats.stamina = 0;
         }
-        if(stamina > 5)
+        if(stats.stamina > 5)
         {
-            stamina = 5;
+            stats.stamina = 5;
         }
-        if(inUse == false && stamina < 5 && coolDown2 == false)
+        if(stats.inUse == false && stats.stamina < 5 && coolDown2 == false)
         {
             StartCoroutine(staminaGain());
         }
 
-        stam.setStamina(stamina);
+        stam.setStamina(stats.stamina);
 
         if(stats.grabbedStatusEffect == true)
         {
@@ -158,15 +159,6 @@ public class Player : MonoBehaviour
             healthScore.text = "Health: " + stats.health;
             StartCoroutine(invincibilityFrames());
         }
-        if (stats.platformGrab == false)
-        {
-            Physics2D.IgnoreLayerCollision(3, 9, false);
-            Physics2D.IgnoreLayerCollision(3, 10, false);
-            Physics2D.IgnoreLayerCollision(3, 10, false);
-            Physics2D.IgnoreLayerCollision(3, 13, false);
-            Physics2D.IgnoreLayerCollision(3, 14, false);
-            Physics2D.IgnoreLayerCollision(3, 12, false);
-        }
     }
 
     void FixedUpdate()
@@ -190,70 +182,72 @@ public class Player : MonoBehaviour
             float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
             movementDirection.Normalize();
         //
-            if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0 && Input.GetKey(KeyCode.X) && stamina > 0 && stats.skills[1] == true)
+        if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0 && Input.GetKey(KeyCode.X) && stats.stamina > 0 && stats.skills[1] == true)
+        {
+            fireAbility.SetActive(true);
+            fireRB.position = fireRB.position + movementDirection * Time.deltaTime * stats.speed;
+            if (stats.speedStatusEffect == false)
             {
-                fireAbility.SetActive(true);
-                fireRB.position = fireRB.position + movementDirection * Time.deltaTime * stats.speed;
-                if (stats.speedStatusEffect == false)
-                {
-                    stats.speed = stats.speedHolder;
-                }
-                Physics2D.IgnoreLayerCollision(3, 9, true);
-                Physics2D.IgnoreLayerCollision(3, 10, true);
-                Physics2D.IgnoreLayerCollision(3, 12, true);
-            stamina -= .1f;
-                inUse = true;
+                stats.speed = stats.speedHolder;
             }
-            else if (stats.skills[1] == true && Input.GetAxisRaw("Horizontal") > 0 && Input.GetKey(KeyCode.X) && stamina > 0 || stats.skills[1] == true && Input.GetAxisRaw("Vertical") > 0 && Input.GetKey(KeyCode.X) && stamina > 0 || stats.skills[1] == true && Input.GetAxisRaw("Horizontal") < 0 && Input.GetKey(KeyCode.X) && stamina > 0 || stats.skills[1] == true && Input.GetAxisRaw("Vertical") < 0 && Input.GetKey(KeyCode.X) && stamina > 0)
+            Physics2D.IgnoreLayerCollision(3, 9, true);
+            Physics2D.IgnoreLayerCollision(3, 10, true);
+            Physics2D.IgnoreLayerCollision(3, 12, true);
+            stats.stamina -= .1f;
+            stats.inUse = true;
+        }
+        else if (stats.skills[1] == true && Input.GetAxisRaw("Horizontal") > 0 && Input.GetKey(KeyCode.X) && stats.stamina > 0 || stats.skills[1] == true && Input.GetAxisRaw("Vertical") > 0 && Input.GetKey(KeyCode.X) && stats.stamina > 0 || stats.skills[1] == true && Input.GetAxisRaw("Horizontal") < 0 && Input.GetKey(KeyCode.X) && stats.stamina > 0 || stats.skills[1] == true && Input.GetAxisRaw("Vertical") < 0 && Input.GetKey(KeyCode.X) && stats.stamina > 0)
+        {
+            fireAbility.SetActive(true);
+            fireRB.position = fireRB.position + movementDirection * Time.deltaTime * stats.speed;
+            stats.speed = 20;
+            Physics2D.IgnoreLayerCollision(3, 9, true);
+            Physics2D.IgnoreLayerCollision(3, 10, true);
+            Physics2D.IgnoreLayerCollision(3, 12, true);
+            stats.stamina -= .3f;
+            stats.inUse = true;
+        }
+        else if (Input.GetKey(KeyCode.X) && stats.stamina == 0)
+        {
+            stats.inUse = true;
+            fireAbility.SetActive(false);
+            if (stats.speedStatusEffect == false)
             {
-                fireAbility.SetActive(true);
-                fireRB.position = fireRB.position + movementDirection * Time.deltaTime * stats.speed;
-                stats.speed = 20;
-                Physics2D.IgnoreLayerCollision(3, 9, true);
-                Physics2D.IgnoreLayerCollision(3, 10, true);
-                Physics2D.IgnoreLayerCollision(3, 12, true);
-                stamina -= .3f;
-                inUse = true;
+                stats.speed = stats.speedHolder;
             }
-            else if (Input.GetKey(KeyCode.X) && stamina == 0)
+            if (stats.grabbedStatusEffect == false)
             {
-                inUse = true;
-                fireAbility.SetActive(false);
-                if (stats.speedStatusEffect == false)
-                {
-                    stats.speed = stats.speedHolder;
-                }
-                if (stats.grabbedStatusEffect == false)
-                {
-                    Physics2D.IgnoreLayerCollision(3, 9, false);
-                    Physics2D.IgnoreLayerCollision(3, 10, false);
-                    Physics2D.IgnoreLayerCollision(3, 10, false);
-                    Physics2D.IgnoreLayerCollision(3, 13, false);
-                    Physics2D.IgnoreLayerCollision(3, 14, false);
-                    Physics2D.IgnoreLayerCollision(3, 12, false);
+                Physics2D.IgnoreLayerCollision(3, 9, false);
+                Physics2D.IgnoreLayerCollision(3, 10, false);
+                Physics2D.IgnoreLayerCollision(3, 10, false);
+                Physics2D.IgnoreLayerCollision(3, 13, false);
+                Physics2D.IgnoreLayerCollision(3, 14, false);
+                Physics2D.IgnoreLayerCollision(3, 12, false);
             }
-            }
-            else
+        }
+        else
+        {
+            fireAbility.SetActive(false);
+            if (stats.speedStatusEffect == false)
             {
-                fireAbility.SetActive(false);
-                if (stats.speedStatusEffect == false)
-                {
-                    stats.speed = stats.speedHolder;
-                }
-                if (stats.grabbedStatusEffect == false)
-                {
-                    Physics2D.IgnoreLayerCollision(3, 9, false);
-                    Physics2D.IgnoreLayerCollision(3, 10, false);
-                    Physics2D.IgnoreLayerCollision(3, 10, false);
-                    Physics2D.IgnoreLayerCollision(3, 13, false);
-                    Physics2D.IgnoreLayerCollision(3, 14, false);
-                    Physics2D.IgnoreLayerCollision(3, 12, false);
+                stats.speed = stats.speedHolder;
+            }
+            if (stats.grabbedStatusEffect == false)
+            {
+                Physics2D.IgnoreLayerCollision(3, 9, false);
+                Physics2D.IgnoreLayerCollision(3, 10, false);
+                Physics2D.IgnoreLayerCollision(3, 10, false);
+                Physics2D.IgnoreLayerCollision(3, 13, false);
+                Physics2D.IgnoreLayerCollision(3, 14, false);
+                Physics2D.IgnoreLayerCollision(3, 12, false);
             }
 
-                //
-                inUse = false;
+            //
+            if (stats.skillUse[2] == false)
+            {
+                stats.inUse = false;
             }
-
+        }
             if (animator.GetBool("isAttacking") == false)
             {
                 rb.position = rb.position + movementDirection * Time.deltaTime * stats.speed;
@@ -398,7 +392,7 @@ public class Player : MonoBehaviour
     {
         coolDown2 = true;
         yield return new WaitForSeconds(.5f);
-        stamina += 1f;
+        stats.stamina += 1f;
         coolDown2 = false;
     }
 

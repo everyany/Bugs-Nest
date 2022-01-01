@@ -20,7 +20,7 @@ public class elasticFly : MonoBehaviour
         Physics2D.IgnoreLayerCollision(12, 14, true);
     }
 
-    void OnCollisionEnter2D(Collision2D collider)
+    void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Player" && stats.grabbedStatusEffect == false && stats.noGrab == false)
         {

@@ -14,6 +14,7 @@ public class bullet : MonoBehaviour
 
     bool coolDown = false;
     bool usable;
+    public staminaBar stam;
 
 
     void Update()
@@ -40,9 +41,15 @@ public class bullet : MonoBehaviour
     {
         coolDown = true;
         stats.skillUse[2] = true;
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        stats.inUse = true;
+        if(stats.stamina > 0)
+        {
+            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        }
+        stats.stamina -= 1f;
         yield return new WaitForSeconds(.6f);
         stats.skillUse[2] = false;
+        stats.inUse = false;
         coolDown = false;
     }
 }
