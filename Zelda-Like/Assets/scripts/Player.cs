@@ -158,6 +158,15 @@ public class Player : MonoBehaviour
             healthScore.text = "Health: " + stats.health;
             StartCoroutine(invincibilityFrames());
         }
+        if (stats.platformGrab == false)
+        {
+            Physics2D.IgnoreLayerCollision(3, 9, false);
+            Physics2D.IgnoreLayerCollision(3, 10, false);
+            Physics2D.IgnoreLayerCollision(3, 10, false);
+            Physics2D.IgnoreLayerCollision(3, 13, false);
+            Physics2D.IgnoreLayerCollision(3, 14, false);
+            Physics2D.IgnoreLayerCollision(3, 12, false);
+        }
     }
 
     void FixedUpdate()
@@ -191,7 +200,8 @@ public class Player : MonoBehaviour
                 }
                 Physics2D.IgnoreLayerCollision(3, 9, true);
                 Physics2D.IgnoreLayerCollision(3, 10, true);
-                stamina -= .1f;
+                Physics2D.IgnoreLayerCollision(3, 12, true);
+            stamina -= .1f;
                 inUse = true;
             }
             else if (stats.skills[1] == true && Input.GetAxisRaw("Horizontal") > 0 && Input.GetKey(KeyCode.X) && stamina > 0 || stats.skills[1] == true && Input.GetAxisRaw("Vertical") > 0 && Input.GetKey(KeyCode.X) && stamina > 0 || stats.skills[1] == true && Input.GetAxisRaw("Horizontal") < 0 && Input.GetKey(KeyCode.X) && stamina > 0 || stats.skills[1] == true && Input.GetAxisRaw("Vertical") < 0 && Input.GetKey(KeyCode.X) && stamina > 0)
@@ -201,6 +211,7 @@ public class Player : MonoBehaviour
                 stats.speed = 20;
                 Physics2D.IgnoreLayerCollision(3, 9, true);
                 Physics2D.IgnoreLayerCollision(3, 10, true);
+                Physics2D.IgnoreLayerCollision(3, 12, true);
                 stamina -= .3f;
                 inUse = true;
             }
@@ -219,7 +230,8 @@ public class Player : MonoBehaviour
                     Physics2D.IgnoreLayerCollision(3, 10, false);
                     Physics2D.IgnoreLayerCollision(3, 13, false);
                     Physics2D.IgnoreLayerCollision(3, 14, false);
-                }
+                    Physics2D.IgnoreLayerCollision(3, 12, false);
+            }
             }
             else
             {
@@ -235,7 +247,8 @@ public class Player : MonoBehaviour
                     Physics2D.IgnoreLayerCollision(3, 10, false);
                     Physics2D.IgnoreLayerCollision(3, 13, false);
                     Physics2D.IgnoreLayerCollision(3, 14, false);
-                }
+                    Physics2D.IgnoreLayerCollision(3, 12, false);
+            }
 
                 //
                 inUse = false;
