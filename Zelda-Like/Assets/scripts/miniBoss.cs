@@ -21,6 +21,22 @@ public class miniBoss : MonoBehaviour
     Color32 hit = new Color32(255, 0, 255, 255);
     Color32 normal = new Color32(255, 255, 255, 255);
 
+    [SerializeField]
+    private playerStats stats;
+
+    void Start()
+    {
+        stats.bossHealth = 48;
+    }
+
+    void Update()
+    {
+        if(stats.bossStart == false)
+        {
+            health = stats.bossHealth;
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D coll)
     {
         if(coll.gameObject.tag == "attack" || coll.gameObject.tag == "sword")
