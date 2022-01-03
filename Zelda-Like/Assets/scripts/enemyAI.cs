@@ -33,35 +33,26 @@ public class enemyAI : MonoBehaviour
         {
             case 1:
                 rb.velocity = new Vector3(speed, 0, 0);
-                Debug.Log("1");
                 break;
             case 2:
-                rb.velocity = new Vector3(0, speed, 0);
-                Debug.Log("2");
                 break;
             case 3:
                 rb.velocity = new Vector3(-speed, 0, 0);
-                Debug.Log("3");
                 break;
             case 4:
                 rb.velocity = new Vector3(0, -speed, 0);
-                Debug.Log("4");
                 break;
             case 5:
                 rb.velocity = new Vector3(speed, speed, 0);
-                Debug.Log("5");
                 break;
             case 6:
                 rb.velocity = new Vector3(-speed, -speed, 0);
-                Debug.Log("6");
                 break;
             case 7:
                 rb.velocity = new Vector3(-speed, speed, 0);
-                Debug.Log("7");
                 break;
             default:
                 rb.velocity = new Vector3(speed, -speed, 0);
-                Debug.Log("7");
                 break;
 
         }

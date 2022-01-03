@@ -12,7 +12,7 @@ public class keyTrigger : MonoBehaviour
         if (collider.gameObject.tag == "Player" && Input.GetKey(KeyCode.Z))
         {
             Destroy(this.gameObject);
-            stats.keys = stats.keys + .5f;
+            stats.keys = stats.keys + 1f;
         }
     }
 }

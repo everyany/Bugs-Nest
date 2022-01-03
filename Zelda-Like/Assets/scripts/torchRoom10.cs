@@ -24,6 +24,8 @@ public class torchRoom10 : MonoBehaviour
 
     int torchCounter = 0;
 
+    bool torchZero;
+
     void Start()
     {
         if (roomNum != 0)
@@ -32,6 +34,7 @@ public class torchRoom10 : MonoBehaviour
             Array.Clear(torches.puzzleActivated, 0, torches.puzzleActivated.Length);
         }
         torches.done = false;
+        torchZero = false;
     }
 
     void Update()
@@ -45,6 +48,15 @@ public class torchRoom10 : MonoBehaviour
         if (roomNum != 0 && puzz.rooms[roomNum] >= 4)
         {
             torches.done = true;
+        }
+        if (puzz.rooms[roomNum] < 0)
+        {
+            puzz.rooms[roomNum] = 0;
+        }
+
+        if (torches.puzzleActivated[0] && torches.puzzleActivated[1] && torches.puzzleActivated[2] && torches.puzzleActivated[3])
+        {
+            puzz.rooms[roomNum] = 4;
         }
     }
 
@@ -62,18 +74,26 @@ public class torchRoom10 : MonoBehaviour
             if(torchNum == 0 && torches.puzzleActivated[0] == false && torches.puzzleActivated[1] == false && torches.puzzleActivated[2] == false && torches.puzzleActivated[3] == false)
             {
                 torches.puzzleActivated[0] = true;
+                torchZero = true;
             }
             else if (torchNum == 1 && torches.puzzleActivated[1] == false && torches.puzzleActivated[0] == true && torches.puzzleActivated[2] == false && torches.puzzleActivated[3] == false)
             {
                 torches.puzzleActivated[1] = true;
+                torchZero = true;
             }
             else if (torchNum == 2 && torches.puzzleActivated[2] == false && torches.puzzleActivated[0] == true && torches.puzzleActivated[1] == true && torches.puzzleActivated[3] == false)
             {
                 torches.puzzleActivated[2] = true;
+                torchZero = true;
             }
             else if (torchNum == 3 && torches.puzzleActivated[3] == false && torches.puzzleActivated[0] == true && torches.puzzleActivated[1] == true && torches.puzzleActivated[2] == true)
             {
                 torches.puzzleActivated[3] = true;
+                torchZero = true;
+            }
+            else
+            {
+                torchZero = false;
             }
 
             if (burning == false && torches.done == false)
@@ -100,10 +120,19 @@ public class torchRoom10 : MonoBehaviour
         if (torches.done == false)
         {
             Destroy(fireClone);
-            puzz.rooms[roomNum]--;
+            if(torchZero == true && torchNum != 0)
+            {
+                puzz.rooms[roomNum]--;
+            }
+            else if(torchZero == true && torchNum == 0)
+            {
+                puzz.rooms[roomNum] = 0;
+            }
+            
             torchCounter = 0;
             torches.notInOrder = true;
             torches.puzzleActivated[torchNum] = false;
+            torchZero = false;
             burning = false;
         }
     }

@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
 
         if(stats.grabbedStatusEffect == true)
         {
-            transform.localPosition = new Vector3(0, 0, 0);
+  //player.transform.localPosition = new Vector3(0, 0, 0);
             frontOfPlayer.transform.localPosition = new Vector3(0.1999898f, -16f, 0.0f);
         }
         circle.transform.localPosition = new Vector3(0f, 0f, 0f);
@@ -193,6 +193,7 @@ public class Player : MonoBehaviour
             Physics2D.IgnoreLayerCollision(3, 9, true);
             Physics2D.IgnoreLayerCollision(3, 10, true);
             Physics2D.IgnoreLayerCollision(3, 12, true);
+            Physics2D.IgnoreLayerCollision(3, 14, true);
             stats.stamina -= .1f;
             stats.inUse = true;
         }
@@ -204,6 +205,7 @@ public class Player : MonoBehaviour
             Physics2D.IgnoreLayerCollision(3, 9, true);
             Physics2D.IgnoreLayerCollision(3, 10, true);
             Physics2D.IgnoreLayerCollision(3, 12, true);
+            Physics2D.IgnoreLayerCollision(3, 14, true);
             stats.stamina -= .3f;
             stats.inUse = true;
         }
@@ -345,7 +347,7 @@ public class Player : MonoBehaviour
                 stats.health--;
             }
             healthScore.text = "Health: " + stats.health;
-            if (coolDown3 == false && collision.gameObject.tag != "pitfall")
+            if (coolDown3 == false)
             {
                 StartCoroutine(invincibilityFrames());
             }

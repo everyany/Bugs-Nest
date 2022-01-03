@@ -21,7 +21,7 @@ public class web : MonoBehaviour
             {
                 player.transform.parent = this.gameObject.transform;
             }
-            stats.grabbedStatusEffect = true;
+          //stats.grabbedStatusEffect = true;
             player.transform.rotation = Quaternion.identity;
             Physics2D.IgnoreLayerCollision(3, 9, true);
         }
@@ -33,7 +33,7 @@ public class web : MonoBehaviour
             stats.speedStatusEffect = false;
             player.transform.parent = null;
             player.transform.rotation = Quaternion.identity;
-            stats.grabbedStatusEffect = false;
+        //  stats.grabbedStatusEffect = false;
         }
     }
 }

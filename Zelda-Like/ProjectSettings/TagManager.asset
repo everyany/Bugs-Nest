@@ -18,6 +18,7 @@ TagManager:
   - sword
   - bullet
   - block
+  - playerCircle
   layers:
   - Default
   - TransparentFX

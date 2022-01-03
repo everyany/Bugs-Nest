@@ -12,7 +12,6 @@ public class pit : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             collision.gameObject.transform.position = teleportTarget.transform.position;
-            player.transform.parent = null;
         }
     }
 }

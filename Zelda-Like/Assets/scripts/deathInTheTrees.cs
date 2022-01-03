@@ -15,14 +15,17 @@ public class deathInTheTrees : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player" && stats.grabbedStatusEffect)
         {
-            StartCoroutine(dramaticEffect());
+            player.transform.parent = null;
+            stats.health = 0;
+         // player.transform.position = teleportTarget.transform.position;
+         // StartCoroutine(dramaticEffect());
         }
     }
 
-    IEnumerator dramaticEffect()
+  /*IEnumerator dramaticEffect()
     {
-        yield return new WaitForSeconds(.01f);
+      //yield return new WaitForSeconds(.01f);
         player.transform.parent = null;
         player.transform.position = teleportTarget.transform.position;
-    }
+    }*/
 }
