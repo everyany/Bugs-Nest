@@ -340,7 +340,7 @@ public class Player : MonoBehaviour
             stats.keys--;
             textScore.text = "Keys: " + stats.keys;
         }
-        if(collision.gameObject.tag == "lava" || collision.gameObject.tag == "pitfall" || collision.gameObject.tag == "enemy" || collision.gameObject.tag == "fire" && stats.health > 0)
+        if(collision.gameObject.tag == "lava" || collision.gameObject.tag == "enemy" || collision.gameObject.tag == "fire" && stats.health > 0)
         {
             if (invincible == false)
             {
