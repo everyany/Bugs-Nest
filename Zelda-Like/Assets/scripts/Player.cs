@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        textScore.text = "Keys: " + stats.keys;
+        textScore.text = "X " + stats.keys;
         if (stats.stamina < 0)
         {
             stats.stamina = 0;
