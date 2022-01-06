@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "playerstats", menuName = "numeric player values")]
 public class playerStats : ScriptableObject
 {
+    public int healthHolder;
     public int health;
     public float speed;
     public float speedHolder;

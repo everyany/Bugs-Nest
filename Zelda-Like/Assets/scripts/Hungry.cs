@@ -13,6 +13,7 @@ public class Hungry : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
     public Sprite newSprite;
+    public Sprite ogSprite;
 
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -23,6 +24,18 @@ public class Hungry : MonoBehaviour
                 puzz.rooms[roomNum]++;
             }
             spriteRenderer.sprite = newSprite;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "block")
+        {
+            if (roomNum != 0)
+            {
+                puzz.rooms[roomNum]--;
+            }
+            spriteRenderer.sprite = ogSprite;
         }
     }
 }

@@ -12,18 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa448e61e184f3a4fb41e6db519411d6, type: 3}
   m_Name: playerstats
   m_EditorClassIdentifier: 
-  health: 6
+  healthHolder: 12
+  health: 12
   speed: 3
   speedHolder: 3
   speedStatusEffect: 0
   grabbedStatusEffect: 0
   keys: 0
   noGrab: 1
-  skills: 0001
+  skills: 0000
   skillUse: 000000
   hit: 0
   bossStart: 1
-  stamina: 3
+  stamina: 5
   maxStamina: 5
   inUse: 0
   bossHealth: 48

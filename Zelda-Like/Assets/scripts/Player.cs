@@ -95,7 +95,8 @@ public class Player : MonoBehaviour
         Array.Clear(stats.skills, 0, stats.skills.Length);
         stats.speedStatusEffect = false;
         stats.grabbedStatusEffect = false;
-        stats.health = 10;
+        stats.healthHolder = 10;
+        stats.health = stats.healthHolder;
         stats.keys = 0;
         stam.setMaxStamina(stats.maxStamina);
         //skullCount.done = false;
@@ -159,6 +160,13 @@ public class Player : MonoBehaviour
             healthScore.text = "Health: " + stats.health;
             StartCoroutine(invincibilityFrames());
         }
+
+        if(stats.health < 0)
+        {
+            stats.health = 0;
+        }
+
+        healthScore.text = "Health: " + stats.health;
     }
 
     void FixedUpdate()
@@ -281,7 +289,7 @@ public class Player : MonoBehaviour
         if(stats.health == 0)
         {
             player.transform.position = teleportTarget.transform.position;
-            stats.health += 10;
+            stats.health = stats.healthHolder;
             healthScore.text = "Health: " + stats.health;
         }
 

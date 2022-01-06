@@ -33,7 +33,7 @@ public class webSpawn : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D collider)
     {
-        Debug.Log("you've exited");
+        //Debug.Log("you've exited");
         if (collider.gameObject.tag == "Player")
         {
             stats.speedStatusEffect = false;

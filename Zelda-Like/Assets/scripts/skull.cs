@@ -11,7 +11,10 @@ public class skull : MonoBehaviour
     private Room7Enemies enemies;
 
     [SerializeField]
-    public int health = 5;
+    private int health = 5;
+
+    [SerializeField]
+    private bool heart;
 
     private bool dead = false;
 
@@ -23,6 +26,11 @@ public class skull : MonoBehaviour
     public SpriteRenderer m_SpriteRenderer;
     Color32 hit = new Color32(255, 0, 255, 255);
     Color32 normal = new Color32(255, 255, 255, 255);
+
+    [SerializeField]
+    private Transform heartSpawn;
+    [SerializeField]
+    private GameObject heartFab;
 
     void Start()
     {
@@ -41,6 +49,10 @@ public class skull : MonoBehaviour
             }
             dead = true;
             Destroy(this.gameObject);
+            if (heart)
+            {
+                Instantiate(heartFab, heartSpawn.position, heartSpawn.rotation);
+            }
         }
     }
 
