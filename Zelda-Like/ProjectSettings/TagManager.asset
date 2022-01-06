@@ -19,6 +19,7 @@ TagManager:
   - bullet
   - block
   - playerCircle
+  - keyPart
   layers:
   - Default
   - TransparentFX
@@ -38,7 +39,7 @@ TagManager:
   - boss eye
   - webline
   - web
-  - 
+  - fireBlast
   - 
   - 
   - 
