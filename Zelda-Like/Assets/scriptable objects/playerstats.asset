@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: playerstats
   m_EditorClassIdentifier: 
   healthHolder: 10
-  health: 2
+  health: 10
   speed: 3
   speedHolder: 3
   speedStatusEffect: 0

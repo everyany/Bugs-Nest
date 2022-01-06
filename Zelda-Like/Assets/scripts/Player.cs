@@ -103,6 +103,7 @@ public class Player : MonoBehaviour
         escaped.enabled = false;
         weapon.SetActive(false);
         Physics2D.IgnoreLayerCollision(3, 6, true);
+        Physics2D.IgnoreLayerCollision(3, 16, true);
         Physics2D.IgnoreLayerCollision(3, 11, true);
         Physics2D.IgnoreLayerCollision(6, 9, true);
         Physics2D.IgnoreLayerCollision(10, 15, true);

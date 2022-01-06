@@ -34,7 +34,7 @@ public class specificTorch : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.X) && stats.skills[1] == true)
+        if (Input.GetKey(KeyCode.X) && stats.skills[1] == true && stats.stamina > 0)
         {
             player.transform.parent = null;
         }
