@@ -20,6 +20,7 @@ TagManager:
   - block
   - playerCircle
   - keyPart
+  - bossBarrier
   layers:
   - Default
   - TransparentFX

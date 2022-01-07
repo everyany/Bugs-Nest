@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthHolder: 10
   health: 10
-  speed: 3
+  speed: 0
   speedHolder: 3
-  speedStatusEffect: 0
-  grabbedStatusEffect: 0
+  speedStatusEffect: 1
+  grabbedStatusEffect: 1
   keys: 0
+  bossKeys: 0
+  bossKeyNeeded: 3
   noGrab: 1
   skills: 0000
   skillUse: 000000

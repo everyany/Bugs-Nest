@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private Text textScore;
+    [SerializeField]
+    private Text bossKeyScore;
     //[SerializeField]
     //private int keys = -1;
     //[SerializeField]
@@ -98,6 +100,7 @@ public class Player : MonoBehaviour
         stats.healthHolder = 10;
         stats.health = stats.healthHolder;
         stats.keys = 0;
+        stats.bossKeys = 0;
         stam.setMaxStamina(stats.maxStamina);
         //skullCount.done = false;
         escaped.enabled = false;
@@ -120,6 +123,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         textScore.text = "X " + stats.keys;
+        bossKeyScore.text = "X " + stats.bossKeys + "/" + stats.bossKeyNeeded;
         if (stats.stamina < 0)
         {
             stats.stamina = 0;
@@ -234,6 +238,8 @@ public class Player : MonoBehaviour
                 Physics2D.IgnoreLayerCollision(3, 13, false);
                 Physics2D.IgnoreLayerCollision(3, 14, false);
                 Physics2D.IgnoreLayerCollision(3, 12, false);
+                player.transform.rotation = Quaternion.identity;
+                player.transform.parent = null;
             }
         }
         else
@@ -251,6 +257,8 @@ public class Player : MonoBehaviour
                 Physics2D.IgnoreLayerCollision(3, 13, false);
                 Physics2D.IgnoreLayerCollision(3, 14, false);
                 Physics2D.IgnoreLayerCollision(3, 12, false);
+                player.transform.rotation = Quaternion.identity;
+                player.transform.parent = null;
             }
 
             //
@@ -347,9 +355,14 @@ public class Player : MonoBehaviour
         {
             Destroy(collision.gameObject);
             stats.keys--;
-            textScore.text = "Keys: " + stats.keys;
+            //textScore.text = "Keys: " + stats.keys;
         }
-        if(collision.gameObject.tag == "lava" || collision.gameObject.tag == "enemy" || collision.gameObject.tag == "fire" && stats.health > 0)
+        if (collision.gameObject.tag == "bossBarrier" && stats.bossKeys >= stats.bossKeyNeeded)
+        {
+            Destroy(collision.gameObject);
+            stats.bossKeys -= stats.bossKeyNeeded;
+        }
+        if (collision.gameObject.tag == "lava" || collision.gameObject.tag == "enemy" || collision.gameObject.tag == "fire" && stats.health > 0)
         {
             if (invincible == false)
             {

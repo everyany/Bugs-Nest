@@ -12,6 +12,8 @@ public class playerStats : ScriptableObject
     public bool speedStatusEffect;
     public bool grabbedStatusEffect;
     public float keys;
+    public int bossKeys;
+    public int bossKeyNeeded;
     public bool noGrab;
     public bool[] skills;
     public bool[] skillUse;

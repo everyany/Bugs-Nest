@@ -7,11 +7,18 @@ public class rotate : MonoBehaviour
     private float rotz;
     [SerializeField]
     private float RotationSpeed;
-    [SerializeField]
-    private bool ClockwiseRotation;
+    bool ClockwiseRotation = false;
+
+    bool coolDown = false;
+
     void Update()
     {
-        if(ClockwiseRotation == false)
+        if (coolDown == false)
+        {
+            StartCoroutine(rotationChange());
+        }
+
+        if (ClockwiseRotation == false)
         {
             rotz += Time.deltaTime * RotationSpeed;
         }
@@ -21,5 +28,20 @@ public class rotate : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(0, 0, rotz);
+    }
+
+    IEnumerator rotationChange()
+    {
+        coolDown = true;
+        yield return new WaitForSeconds(3.5f);
+        if (ClockwiseRotation == false)
+        {
+            ClockwiseRotation = true;
+        }
+        else if(ClockwiseRotation == true)
+        {
+            ClockwiseRotation = false;
+        }
+        coolDown = false;
     }
 }
