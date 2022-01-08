@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomNum: 12
   enemies: {fileID: 11400000, guid: 040443f01c864e74a870be9360c6c4da, type: 2}
-  health: 6
+  health: 12
   heart: 1
   rb: {fileID: 248953156210641794}
   coolDown: 0

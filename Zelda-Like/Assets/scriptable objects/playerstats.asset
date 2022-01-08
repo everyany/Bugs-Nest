@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: playerstats
   m_EditorClassIdentifier: 
   healthHolder: 10
-  health: 10
-  speed: 0
+  health: 4
+  speed: 3
   speedHolder: 3
-  speedStatusEffect: 1
-  grabbedStatusEffect: 1
+  speedStatusEffect: 0
+  grabbedStatusEffect: 0
   keys: 0
   bossKeys: 0
   bossKeyNeeded: 3
   noGrab: 1
-  skills: 0000
+  skills: 0001
   skillUse: 000000
   hit: 0
   bossStart: 1
@@ -30,3 +30,4 @@ MonoBehaviour:
   maxStamina: 5
   inUse: 0
   bossHealth: 48
+  finalBossHealth: 48

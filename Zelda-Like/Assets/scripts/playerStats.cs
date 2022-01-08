@@ -23,4 +23,5 @@ public class playerStats : ScriptableObject
     public float maxStamina;
     public bool inUse = false;
     public int bossHealth;
+    public int finalBossHealth;
 }
