@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa448e61e184f3a4fb41e6db519411d6, type: 3}
   m_Name: playerstats
   m_EditorClassIdentifier: 
-  healthHolder: 10
-  health: 4
+  healthHolder: 11
+  health: 11
   speed: 3
   speedHolder: 3
   speedStatusEffect: 0
@@ -26,8 +26,10 @@ MonoBehaviour:
   skillUse: 000000
   hit: 0
   bossStart: 1
+  finalBossStart: 1
   stamina: 5
   maxStamina: 5
   inUse: 0
   bossHealth: 48
-  finalBossHealth: 48
+  finalBossHealth: 100
+  fbTempHealth: 0

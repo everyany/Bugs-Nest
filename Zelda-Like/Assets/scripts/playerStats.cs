@@ -19,9 +19,11 @@ public class playerStats : ScriptableObject
     public bool[] skillUse;
     public bool hit;
     public bool bossStart;
+    public bool finalBossStart;
     public float stamina;
     public float maxStamina;
     public bool inUse = false;
     public int bossHealth;
     public int finalBossHealth;
+    public int fbTempHealth;
 }

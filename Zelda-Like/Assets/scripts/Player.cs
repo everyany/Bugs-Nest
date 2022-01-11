@@ -89,6 +89,9 @@ public class Player : MonoBehaviour
     bool invincible = false;
     bool usable;
 
+    [SerializeField]
+    private Text winText;
+
     //public bool speedStatusEffect = false;
 
     void Start()
@@ -101,9 +104,11 @@ public class Player : MonoBehaviour
         stats.health = stats.healthHolder;
         stats.keys = 0;
         stats.bossKeys = 0;
+        stats.fbTempHealth = stats.finalBossHealth;
         stam.setMaxStamina(stats.maxStamina);
         //skullCount.done = false;
         escaped.enabled = false;
+        winText.enabled = false;
         weapon.SetActive(false);
         Physics2D.IgnoreLayerCollision(3, 6, true);
         Physics2D.IgnoreLayerCollision(3, 16, true);
@@ -122,6 +127,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (stats.fbTempHealth <= 0)
+        {
+            winText.text = "Congrats You Won!That's It For Now.";
+        }
         textScore.text = "X " + stats.keys;
         bossKeyScore.text = "X " + stats.bossKeys + "/" + stats.bossKeyNeeded;
         if (stats.stamina < 0)

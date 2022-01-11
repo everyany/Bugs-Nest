@@ -5,9 +5,11 @@ using UnityEngine;
 public class finalBoss : MonoBehaviour
 {
     [SerializeField]
-    private int health = 12;
+    private GameObject finalBossHolder;
+    [SerializeField]
+    private Transform heartPoint;
     public Animator bossAnimator;
-    public Animator animator;
+    //public Animator animator;
 
     [SerializeField]
     private ForestPuzzleCheck puzz;
@@ -24,17 +26,15 @@ public class finalBoss : MonoBehaviour
     [SerializeField]
     private playerStats stats;
 
-    void Start()
-    {
-        stats.finalBossHealth = 48;
-    }
+    bool heart = false;
+    [SerializeField]
+    private GameObject heartFab;
+    [SerializeField]
+    private GameObject BossRestart;
 
     void Update()
     {
-        if (stats.bossStart == false)
-        {
-            health = stats.finalBossHealth;
-        }
+        //health = stats.fbTempHealth;
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -42,17 +42,23 @@ public class finalBoss : MonoBehaviour
         if (coll.gameObject.tag == "attack" || coll.gameObject.tag == "sword")
         {
             coolDown = false;
-            if (health > 0)
+            if (stats.fbTempHealth > 0)
             {
-                health -= 2;
+                stats.fbTempHealth -= 2;
             }
-            else if (health <= 0)
+            else if (stats.fbTempHealth <= 0)
             {
                 bossAnimator.SetBool("start", false);
                 bossAnimator.SetBool("dead", true);
-
-                animator.SetBool("close", false);
-                animator.SetBool("open", true);
+                if (heart == false)
+                {
+                    heart = true;
+                    Instantiate(heartFab, heartPoint.position, heartPoint.rotation);
+                }
+                Destroy(finalBossHolder);
+                Destroy(BossRestart);
+                //animator.SetBool("close", false);
+                //animator.SetBool("open", true);
                 if (done == false)
                 {
                     puzz.rooms[roomNum]++;
@@ -67,17 +73,24 @@ public class finalBoss : MonoBehaviour
         else if (coll.gameObject.tag == "bullet")
         {
             coolDown = false;
-            if (health > 0)
+            if (stats.fbTempHealth > 0)
             {
-                health--;
+                stats.fbTempHealth--;
             }
-            else if (health <= 0)
+            else if (stats.fbTempHealth <= 0)
             {
                 bossAnimator.SetBool("start", false);
                 bossAnimator.SetBool("dead", true);
+                if (heart == false)
+                {
+                    heart = true;
+                    Instantiate(heartFab, heartPoint.position, heartPoint.rotation);
+                }
+                Destroy(finalBossHolder);
+                Destroy(BossRestart);
 
-                animator.SetBool("close", false);
-                animator.SetBool("open", true);
+                //animator.SetBool("close", false);
+                //animator.SetBool("open", true);
                 if (done == false)
                 {
                     puzz.rooms[roomNum]++;
