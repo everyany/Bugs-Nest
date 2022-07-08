@@ -8,6 +8,9 @@ public class destroyEnemy : MonoBehaviour
     [SerializeField]
     private float time = 45f;
 
+    [SerializeField]
+    private playerStats stats;
+
     void Update()
     {
         if (coolDown == false)

@@ -23,7 +23,7 @@ MonoBehaviour:
   bossKeyNeeded: 3
   noGrab: 1
   skills: 0001
-  skillUse: 000000
+  skillUse: 000100
   hit: 0
   bossStart: 1
   finalBossStart: 1
